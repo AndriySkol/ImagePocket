@@ -4,8 +4,9 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="27fb61ef056d44bb8f02e1898f33ce06" Name="Diagram1">
+      <Diagram DiagramId="f859c663aae84b3f996ef3f7111f7bd2" Name="Diagram1">
         <EntityTypeShape EntityType="ImagePocketModel.ImagesPathes" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="ImagePocketModel.MhtmlPages" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

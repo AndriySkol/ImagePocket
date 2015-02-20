@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="ImagePocketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="ImagePocketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ImagesPathes">
           <Key>
             <PropertyRef Name="ID" />
@@ -12,11 +12,18 @@
           <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Path" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="MhtmlPages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PagePath" Type="nchar" MaxLength="100" />
+        </EntityType>
         <EntityContainer Name="ImagePocketModelStoreContainer">
           <EntitySet Name="ImagesPathes" EntityType="Self.ImagesPathes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MhtmlPages" EntityType="Self.MhtmlPages" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="ImagePocketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -27,20 +34,36 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="Path" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
-        <EntityContainer Name="ImagePocketEntities" annotation:LazyLoadingEnabled="true">
+        <EntityType Name="MhtmlPages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PagePath" Type="String" MaxLength="100" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="ImagePocketEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="ImagesPathes" EntityType="Self.ImagesPathes" />
+          <EntitySet Name="MhtmlPages" EntityType="Self.MhtmlPages" />
         </EntityContainer>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="ImagePocketModelStoreContainer" CdmEntityContainer="ImagePocketEntities">
+        <EntityContainerMapping StorageEntityContainer="ImagePocketModelStoreContainer" CdmEntityContainer="ImagePocketEntities1">
           <EntitySetMapping Name="ImagesPathes">
             <EntityTypeMapping TypeName="ImagePocketModel.ImagesPathes">
               <MappingFragment StoreEntitySet="ImagesPathes">
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Path" ColumnName="Path" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MhtmlPages">
+            <EntityTypeMapping TypeName="ImagePocketModel.MhtmlPages">
+              <MappingFragment StoreEntitySet="MhtmlPages">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="PagePath" ColumnName="PagePath" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

@@ -13,10 +13,10 @@ namespace MvcApplication4
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ImagePocketEntities : DbContext
+    public partial class ImagePocketEntities1 : DbContext
     {
-        public ImagePocketEntities()
-            : base("name=ImagePocketEntities")
+        public ImagePocketEntities1()
+            : base("name=ImagePocketEntities1")
         {
         }
     
@@ -26,5 +26,6 @@ namespace MvcApplication4
         }
     
         public DbSet<ImagesPathes> ImagesPathes { get; set; }
+        public DbSet<MhtmlPages> MhtmlPages { get; set; }
     }
 }
